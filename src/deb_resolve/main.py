@@ -21,12 +21,12 @@ def _get_deps(package: apt.Package, installed: bool = False) -> list[apt.package
     return []
 
 
-def _get_dep_packages(dependency, installed: bool = False):
+def _get_dep_packages(dependency, installed: bool = False) -> set[apt.Package]:
     target_versions = dependency.installed_target_versions if installed else dependency.target_versions
     return {version.package for version in target_versions}
 
 
-def _recurse_deps(packages: list[apt.Package], levels: int = 1, installed: bool = False) -> set:
+def _recurse_deps(packages: list[apt.Package], levels: int = 1, installed: bool = False) -> set[apt.Package]:
     if not packages:
         return set()
     total_deps = set()
@@ -46,7 +46,7 @@ def _recurse_deps(packages: list[apt.Package], levels: int = 1, installed: bool 
     return total_deps
 
 
-def main():
+def main() -> None:
     args = parse_args()
     requested_packages = args.packages
 
