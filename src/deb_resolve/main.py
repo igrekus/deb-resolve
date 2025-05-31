@@ -5,12 +5,12 @@ import apt_pkg
 
 from .args import parse_args
 
-if "APT" not in apt_pkg.config:
+if 'APT' not in apt_pkg.config:
     apt_pkg.init_config()
 apt_pkg.init_system()
 
-apt_pkg.config.set("APT::Install-Recommends", "0")
-apt_pkg.config.set("APT::Install-Suggests", "0")
+apt_pkg.config.set('APT::Install-Recommends', '0')
+apt_pkg.config.set('APT::Install-Suggests', '0')
 
 
 def _get_deps(package: apt.Package, installed: bool = False) -> list[apt.package.Dependency]:
