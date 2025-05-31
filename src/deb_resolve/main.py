@@ -63,14 +63,15 @@ def main():
 
         changes = c.get_changes()
 
-        print('packages to install relative to the current APT cache state')
+        if not changes:
+            print('all packages are already installed')
+
         for package in changes:
             print(package.versions[0])
 
     else:
         all_deps = _recurse_deps(packages, levels=args.level, installed=False)
 
-        print('all dependencies:')
         for package in all_deps:
             print(' '.join(str(v) for v in package.versions))
 
