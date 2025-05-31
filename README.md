@@ -29,3 +29,7 @@ TBD
 # Known issues
 
 - `--all-deps` doesn't know (yet?) that several packages can implement the same functionality (e.g. c-compiler -> gcc | clang)
+
+# Shoutouts
+
+Based on the resolver from https://gitlab.com/volian/nala
